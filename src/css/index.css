@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --bg-main: #fcfafb; 
   --bg-secondary: #ffffff;
@@ -32,9 +36,13 @@ input, textarea, p, h1, h2, h3, h4, h5, h6, span {
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Outfit', system-ui, -apple-system, sans-serif;
   background-color: var(--bg-main);
   color: var(--text-main);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* Header & Navigation */
@@ -244,9 +252,10 @@ body {
 /* Layout */
 .home-layout {
   display: block;
-  max-width: 1400px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0;
 }
 
 /* Main Content */
@@ -504,9 +513,14 @@ body {
 
 /* Middle Banner */
 .middle-banner {
+  cursor: pointer;
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-size: cover;
   background-position: center 20%;
-  background-attachment: fixed;
+  background-position: center 20%;
   border-radius: 20px;
   padding: 6rem 4rem;
   text-align: center;
@@ -515,6 +529,7 @@ body {
   transition: background-image 1s ease-in-out;
 }
 
+.middle-banner:hover { transform: translateY(-5px); box-shadow: 0 25px 50px rgba(0,0,0,0.3); }
 .middle-banner-content {
   max-width: 700px;
   margin: 0 auto;
@@ -1587,3 +1602,40 @@ body {
   font-size: 1.2rem;
   font-weight: bold;
 }
+
+
+
+.category-banner {
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.category-banner h2 {
+  position: relative;
+  z-index: 3;
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  text-align: center;
+  margin: 0;
+  padding: 0 1rem;
+}
+@keyframes zoomEffect {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.15); }
+}
+@media (max-width: 768px) {
+  .category-banner { height: 150px; }
+  .category-banner h2 { font-size: 1.8rem; }
+}
+
+

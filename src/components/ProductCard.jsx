@@ -28,3 +28,4 @@ const ProductCard = ({ product, badge, badgeColor }) => (
 );
 
 export default ProductCard;
+

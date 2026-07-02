@@ -1,85 +1,67 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { FiTruck, FiRefreshCw, FiShield, FiStar } from 'react-icons/fi';
 import ProductCard from '../components/ProductCard';
 import WatchAndShopCard from '../components/WatchAndShopCard';
 import ProductCarousel from '../components/ProductCarousel';
-import { 
-  sampleProducts, 
-  catImages, 
-  occasionImages, 
+import {
+  sampleProducts,
+  catImages,
+  occasionImages,
   watchAndShopData,
   tunicProducts
 } from '../data/dummyData';
+import CategoryBanner from '../components/CategoryBanner';
+import '../css/Home.css';
 
 const Home = () => {
   const banners = [
     {
-      title: "Discover the New Collection",
-      desc: "Premium Ethnic Wear for Every Occasion",
+      title: "Grace, Woven In",
+      desc: "Premium Ethnic Wear for Every Woman, Every Occasion",
       img: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
     },
     {
       title: "Clearance Sale Extravaganza",
-      desc: "Up to 50% Off on Selected Kurtis",
+      desc: "Up to 50% Off on Selected Kurtis, While Stocks Last",
       img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
     },
     {
       title: "Summer Wedding Specials",
-      desc: "Elegant Anarkali Sets & Bridal Gowns",
+      desc: "Elegant Anarkali Sets & Bridal Gowns for Her Big Day",
       img: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
-    }, 
+    },
     {
       title: "Handloom Heritage",
-      desc: "Authentic Weaves Directly from Artisans",
+      desc: "Authentic Weaves, Sourced Directly From Women Artisans",
       img: "https://images.pexels.com/photos/1853685/pexels-photo-1853685.jpeg?auto=compress&cs=tinysrgb&w=1600"
     }
   ];
 
   const [currentSlide, setCurrentSlide] = React.useState(0);
-  const [currentMiddleSlide, setCurrentMiddleSlide] = React.useState(0);
-
-  const middleBanners = [
-    {
-      title: "New Collection",
-      desc: "Explore our exclusive handpicked designs for this season. Get up to 20% off on premium ethnic wear.",
-      img: "https://images.pexels.com/photos/1055691/pexels-photo-1055691.jpeg?auto=compress&cs=tinysrgb&w=1600"
-    },
-    {
-      title: "Bridal Exclusives",
-      desc: "Make your special day unforgettable with our heavily embroidered bespoke lehengas.",
-      img: "https://images.pexels.com/photos/1853685/pexels-photo-1853685.jpeg?auto=compress&cs=tinysrgb&w=1600"
-    },
-    {
-      title: "Everyday Elegance",
-      desc: "Comfortable, breathable cotton kurtis perfect for the office and casual outings.",
-      img: "https://images.pexels.com/photos/1105342/pexels-photo-1105342.jpeg?auto=compress&cs=tinysrgb&w=1600"
-    },
-    {
-      title: "Festive Glamour",
-      desc: "Stand out at your next party with our latest collection of premium georgette gowns.",
-      img: "https://images.pexels.com/photos/3331484/pexels-photo-3331484.jpeg?auto=compress&cs=tinysrgb&w=1600"
-    }
-  ];
 
   React.useEffect(() => {
     const heroTimer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % banners.length);
     }, 4000);
-    
-    const middleTimer = setInterval(() => {
-      setCurrentMiddleSlide((prev) => (prev + 1) % middleBanners.length);
-    }, 4500); // slightly different timing so they don't sync exactly
-
-    return () => {
-      clearInterval(heroTimer);
-      clearInterval(middleTimer);
-    };
-  }, [banners.length, middleBanners.length]);
+    return () => clearInterval(heroTimer);
+  }, [banners.length]);
 
   return (
     <>
+      <Helmet>
+        <title>SCPK | Premium Ethnic Wear for Women — Anarkalis, Kurtis & Gowns</title>
+        <meta name="description" content="Shop SCPK for the latest premium ethnic wear for women — anarkali suits, designer kurtis, lehengas and gowns. Explore our new collections today with free shipping!" />
+        <link rel="canonical" href="https://www.scpk.com/" />
+      </Helmet>
+
+      {/* Announcement Strip */}
+      <div className="announcement-strip">
+        Free Shipping Over ₹999 &nbsp;•&nbsp; New Arrivals Weekly &nbsp;•&nbsp; Easy 30-Day Returns
+      </div>
+
       {/* 1. Full-Bleed Hero Banner */}
-      <section 
+      <section
         className="hero-banner-full"
         style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url(${banners[currentSlide].img})` }}
       >
@@ -90,9 +72,9 @@ const Home = () => {
         </div>
         <div className="carousel-dots" role="tablist">
           {banners.map((_, i) => (
-            <button 
-              key={i} 
-              className={`dot ${i === currentSlide ? 'active' : ''}`} 
+            <button
+              key={i}
+              className={`dot ${i === currentSlide ? 'active' : ''}`}
               onClick={() => setCurrentSlide(i)}
               aria-label={`Go to slide ${i + 1}`}
               role="tab"
@@ -136,7 +118,6 @@ const Home = () => {
 
       <div className="home-layout">
         <main className="main-home-content">
-          
 
           {/* Shop by Occasion */}
           <section className="home-section">
@@ -149,7 +130,7 @@ const Home = () => {
                 { title: 'Casual' }
               ].map((occ, i) => (
                 <div key={i} className="occasion-card">
-                  <img src={occasionImages[i]} alt={occ.title} />
+                  <img src={occasionImages[i]} alt={`${occ.title} wear for women`} />
                   <div className="occasion-overlay">
                     <h3>{occ.title}</h3>
                   </div>
@@ -173,21 +154,9 @@ const Home = () => {
             </ProductCarousel>
           </section>
 
-          {/* Middle Promotional Banner */}
-          <section 
-            className="middle-banner"
-            style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('${middleBanners[currentMiddleSlide].img}')` }}
-          >
-            <div className="middle-banner-content">
-              <h2>{middleBanners[currentMiddleSlide].title}</h2>
-              <p>{middleBanners[currentMiddleSlide].desc}</p>
-              <button className="shop-now-btn">Explore Now</button>
-            </div>
-          </section>
-
           {/* Best Seller of the Month */}
           <section className="home-section">
-            <h2 className="section-title"><span className="main-title">Best Seller of the Month</span></h2>
+            <CategoryBanner title="BEST SELLER OF THE MONTH" images={["https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1600&h=500&q=80"]} />
             <ProductCarousel>
                {[...sampleProducts].reverse().map((p, i) => (
                  <ProductCard key={`best-${i}`} product={p} badge="BEST" badgeColor="sale" />
@@ -197,7 +166,7 @@ const Home = () => {
 
           {/* Dupatta Set (New Collection) */}
           <section className="home-section">
-            <h2 className="section-title"><span className="main-title">Dupatta Set</span> <span className="subtitle">(New Collection)</span></h2>
+            <CategoryBanner title="DUPATTA SET (NEW COLLECTION)" images={["https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1600&h=500&q=80"]} />
             <ProductCarousel>
                {[...sampleProducts].slice(1).concat(sampleProducts[0]).map((p, i) => (
                  <ProductCard key={`dup-${i}`} product={p} badge="NEW" badgeColor="new" />
@@ -207,7 +176,7 @@ const Home = () => {
 
           {/* Tunic (New Tunic Collection) */}
           <section className="home-section">
-            <h2 className="section-title"><span className="main-title">Tunic</span> <span className="subtitle">(New Tunic Collection)</span></h2>
+            <CategoryBanner title="TUNIC (NEW COLLECTION)" images={["https://images.unsplash.com/photo-1550614000-4b95dd2475a8?auto=format&fit=crop&w=1600&h=500&q=80"]} />
             <ProductCarousel>
                {tunicProducts.map((p, i) => (
                  <ProductCard key={`tunic-${i}`} product={p} badge="NEW" badgeColor="new" />
@@ -234,7 +203,7 @@ const Home = () => {
 
           {/* Kurti (New Collection) */}
           <section className="home-section">
-            <h2 className="section-title"><span className="main-title">Kurti</span> <span className="subtitle">(New Collection)</span></h2>
+            <CategoryBanner title="KURTI (NEW COLLECTION)" images={["https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1600&h=500&q=80"]} />
             <ProductCarousel>
                {[...sampleProducts].reverse().map((p, i) => (
                  <ProductCard key={`kurti-${i}`} product={p} badge="NEW" badgeColor="new" />
@@ -244,7 +213,7 @@ const Home = () => {
 
           {/* Anarkali Set */}
           <section className="home-section">
-            <h2 className="section-title"><span className="main-title">Anarkali Set</span> <span className="subtitle">(New Collection)</span></h2>
+            <CategoryBanner title="ANARKALI SET" images={["https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1600&h=500&q=80"]} />
             <ProductCarousel>
                {[...sampleProducts].slice(1).concat(sampleProducts[0]).map((p, i) => (
                  <ProductCard key={`anarkali-${i}`} product={p} badge="NEW" badgeColor="new" />
@@ -252,10 +221,9 @@ const Home = () => {
             </ProductCarousel>
           </section>
 
-
           {/* Co-Ord Set */}
           <section className="home-section">
-            <h2 className="section-title"><span className="main-title">Co-Ord Set</span></h2>
+            <CategoryBanner title="CO-ORD SET" images={["https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1600&h=500&q=80"]} />
             <ProductCarousel>
                {sampleProducts.map((p, i) => (
                  <ProductCard key={`coord-${i}`} product={p} badge="HOT" badgeColor="sale" />
@@ -265,7 +233,7 @@ const Home = () => {
 
           {/* Party Wear */}
           <section className="home-section">
-            <h2 className="section-title"><span className="main-title">Party Wear</span></h2>
+            <CategoryBanner title="PARTY WEAR" images={["https://images.unsplash.com/photo-1550614000-4b95dd2475a8?auto=format&fit=crop&w=1600&h=500&q=80"]} />
             <ProductCarousel>
                {[...sampleProducts].reverse().map((p, i) => (
                  <ProductCard key={`party-${i}`} product={p} badge="PREMIUM" badgeColor="sale" />
@@ -275,7 +243,7 @@ const Home = () => {
 
           {/* Palazzo Set */}
           <section className="home-section">
-            <h2 className="section-title"><span className="main-title">Palazzo Set</span></h2>
+            <CategoryBanner title="PALAZZO SET" images={["https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1600&h=500&q=80"]} />
             <ProductCarousel>
                {sampleProducts.map((p, i) => (
                  <ProductCard key={`palazzo-${i}`} product={p} badge="NEW" badgeColor="new" />
@@ -285,7 +253,7 @@ const Home = () => {
 
           {/* Gown */}
           <section className="home-section">
-            <h2 className="section-title"><span className="main-title">Gowns</span> <span className="subtitle">(New Collection)</span></h2>
+            <CategoryBanner title="GOWNS" images={["https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1600&h=500&q=80"]} />
             <ProductCarousel>
                {[...sampleProducts].slice(1).concat(sampleProducts[0]).map((p, i) => (
                  <ProductCard key={`gown-${i}`} product={p} badge="EXCLUSIVE" badgeColor="sale" />
@@ -295,7 +263,7 @@ const Home = () => {
 
           {/* Trending Now */}
           <section className="home-section">
-            <h2 className="section-title"><span className="main-title">Trending Now</span></h2>
+            <CategoryBanner title="TRENDING NOW" images={["https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1600&h=500&q=80"]} />
             <ProductCarousel>
                {sampleProducts.map((p, i) => (
                  <ProductCard key={`trend-${i}`} product={p} badge="TRENDING" badgeColor="sale" />
@@ -305,7 +273,7 @@ const Home = () => {
 
           {/* Watch And Shop */}
           <section className="home-section">
-            <h2 className="section-title" style={{textTransform: 'uppercase', letterSpacing: '2px'}}>Watch And Shop</h2>
+            <h2 className="section-title"><span className="main-title">Watch And Shop</span></h2>
             <div className="reels-grid">
               {watchAndShopData.map((item, i) => (
                 <WatchAndShopCard key={`reel-${i}`} item={item} />
@@ -313,18 +281,31 @@ const Home = () => {
             </div>
           </section>
 
-          {/* 6. Testimonials */}
+          {/* Testimonials */}
           <section className="home-section testimonials">
-            <h2 className="section-title">What Our Customers Say</h2>
+            <h2 className="section-title"><span className="main-title">What Our Customers Say</span></h2>
             <div className="testi-grid">
-              {[1,2].map(i => (
+              {[
+                { name: 'Verified Buyer 1', quote: 'Absolutely love the quality and design. Will definitely buy again — the fabric feels so premium against the skin.' },
+                { name: 'Verified Buyer 2', quote: 'The anarkali I ordered fit like it was tailored for me. Compliments all evening at the wedding!' }
+              ].map((t, i) => (
                 <div key={i} className="testi-card">
                   <div className="stars">★★★★★</div>
-                  <p>"Absolutely love the quality and design. Will definitely buy again! The fabric is so premium."</p>
-                  <h4>- Verified Buyer {i}</h4>
+                  <p>"{t.quote}"</p>
+                  <h4>{t.name}</h4>
                 </div>
               ))}
             </div>
+          </section>
+
+          {/* Newsletter */}
+          <section className="newsletter-band">
+            <h2>Join the SCPK Circle</h2>
+            <p>New arrivals, styling notes and members-only offers — straight to your inbox.</p>
+            <form className="newsletter-form" onSubmit={(e) => e.preventDefault()}>
+              <input type="email" placeholder="Your email address" aria-label="Email address" required />
+              <button type="submit">Subscribe</button>
+            </form>
           </section>
 
         </main>
@@ -334,3 +315,5 @@ const Home = () => {
 };
 
 export default Home;
+
+

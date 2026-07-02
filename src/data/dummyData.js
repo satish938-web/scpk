@@ -54,10 +54,10 @@ export const occasionImages = [
 ];
 
 export const watchAndShopData = [
-  { views: "104", title: "Cherry Pop Cotton A Line Kurta Set", img: "https://images.pexels.com/photos/1055691/pexels-photo-1055691.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop" },
-  { views: "200", title: "Ivory Azure Charm Handloom Suit", img: "https://images.pexels.com/photos/1308885/pexels-photo-1308885.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop" },
-  { views: "245", title: "Mocha Brown Mirrorwork A Line", img: "https://images.pexels.com/photos/1105342/pexels-photo-1105342.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop" },
-  { views: "650", title: "Saffron Rani Boho Paisley Co-ord", img: "https://images.pexels.com/photos/1921168/pexels-photo-1921168.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop" },
-  { views: "677", title: "Ivory Minimal Threadwork Suit", img: "https://images.pexels.com/photos/1055691/pexels-photo-1055691.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop" },
-  { views: "1K", title: "Ivory Bloom Threadwork Cotton", img: "https://images.pexels.com/photos/1853685/pexels-photo-1853685.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop" }
+  { views: "104", title: "Cherry Pop Cotton A Line Kurta Set", video: "https://www.instagram.com/reel/DaCcr7Txq11/embed", isInsta: true },
+  { views: "200", title: "Ivory Azure Charm Handloom Suit", video: "https://www.instagram.com/reel/DaCcr7Txq11/embed", isInsta: true },
+  { views: "245", title: "Mocha Brown Mirrorwork A Line", video: "https://www.instagram.com/reel/DaCcr7Txq11/embed", isInsta: true },
+  { views: "650", title: "Saffron Rani Boho Paisley Co-ord", video: "https://www.instagram.com/reel/DaCcr7Txq11/embed", isInsta: true },
+  { views: "677", title: "Ivory Minimal Threadwork Suit", video: "https://www.instagram.com/reel/DaCcr7Txq11/embed", isInsta: true },
+  { views: "1K", title: "Ivory Bloom Threadwork Cotton", video: "https://www.instagram.com/reel/DaCcr7Txq11/embed", isInsta: true }
 ];

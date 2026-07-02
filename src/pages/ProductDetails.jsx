@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import { FiStar, FiShoppingCart, FiCreditCard, FiTruck, FiShield, FiCheck } from 'react-icons/fi';
 import ProductCarousel from '../components/ProductCarousel';
@@ -54,6 +55,12 @@ const ProductDetails = () => {
 
   return (
     <div className="product-details-page">
+      <Helmet>
+        <title>{product.title} | SCPK Premium Ethnic Wear</title>
+        <meta name="description" content={product.description.substring(0, 150) + "..."} />
+        <meta property="og:image" content={product.images[0]} />
+        <meta property="og:title" content={product.title} />
+      </Helmet>
       <div className="pd-container">
         {/* Breadcrumb */}
         <nav className="pd-breadcrumb">
@@ -181,3 +188,4 @@ const ProductDetails = () => {
 };
 
 export default ProductDetails;
+

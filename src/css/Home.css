@@ -1,0 +1,461 @@
+/* ==========================================================================
+   SCPK — Home page styles
+   Design language: "Rani Pink & Ivory" editorial lookbook for ladies'
+   ethnic wear. Serif display type for an atelier feel, warm ivory ground,
+   deep rose + antique gold accents, and a hand-stitched dashed-line motif
+   used as the recurring section divider (a nod to tailoring/embroidery).
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&display=swap');
+
+:root {
+  --ivory: #FBF4EF;
+  --cream: #F4E9DD;
+  --rose-deep: #A6234B;
+  --rose-soft: #E8B4C0;
+  --maroon: #3A1420;
+  --gold: #C7A046;
+  --charcoal: #2B2320;
+  --white: #FFFFFF;
+
+  --font-display: 'Cormorant Garamond', 'Georgia', serif;
+  --font-body: 'Jost', 'Helvetica Neue', sans-serif;
+
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+/* ---------- base ---------- */
+body {
+  background: var(--ivory);
+  color: var(--charcoal);
+  font-family: var(--font-body);
+}
+
+.section-title {
+  text-align: center;
+  margin: 0 0 36px;
+  position: relative;
+}
+.section-title .main-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2.2rem;
+  color: var(--charcoal);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: inline-block;
+  padding-bottom: 14px;
+  position: relative;
+}
+/* signature stitched divider */
+.section-title .main-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 96px;
+  height: 1px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--rose-deep) 0,
+    var(--rose-deep) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
+
+.home-section {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 56px 40px;
+}
+
+/* ---------- hero ---------- */
+.hero-banner-full {
+  position: relative;
+  height: 84vh;
+  min-height: 480px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  transition: background-image 1.2s ease-in-out;
+}
+.hero-content {
+  color: var(--white);
+  padding: 0 6vw 9vh;
+  max-width: 640px;
+}
+.hero-content h1 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.08;
+  margin: 0 0 14px;
+  text-shadow: 0 2px 18px rgba(0,0,0,0.35);
+}
+.hero-content p {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1.15rem;
+  letter-spacing: 0.3px;
+  margin: 0 0 28px;
+  opacity: 0.95;
+}
+.shop-now-btn {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--white);
+  padding: 14px 42px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 0;
+  transition: all 0.4s ease;
+}
+.shop-now-btn:hover {
+  background: var(--white);
+  color: var(--charcoal);
+  transform: translateY(-2px);
+}
+.shop-now-btn:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 3px;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 28px;
+  right: 6vw;
+  display: flex;
+  gap: 10px;
+}
+.carousel-dots .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid var(--white);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s ease, width 0.25s ease;
+}
+.carousel-dots .dot.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  width: 22px;
+  border-radius: 5px;
+}
+.carousel-dots .dot:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* ---------- guarantees bar ---------- */
+.guarantees-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px;
+  background: var(--white);
+  padding: 40px 24px;
+  border-top: 1px solid var(--cream);
+  border-bottom: 1px solid var(--cream);
+}
+.guarantee-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--charcoal);
+  min-width: 220px;
+}
+.guarantee-item .g-icon {
+  font-size: 1.8rem;
+  color: var(--charcoal);
+  flex-shrink: 0;
+  font-weight: 300;
+}
+.guarantee-item h4 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin: 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.guarantee-item p {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* ---------- occasion grid ---------- */
+.occasion-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.occasion-card {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  cursor: pointer;
+}
+.occasion-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.occasion-card:hover img { transform: scale(1.05); }
+.occasion-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0,0,0,0.2);
+  transition: background 0.5s ease;
+}
+.occasion-card:hover .occasion-overlay {
+  background: rgba(0,0,0,0.4);
+}
+.occasion-overlay h3 {
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--white);
+  font-size: 1.2rem;
+  margin: 0;
+  border: 1px solid var(--white);
+  padding: 12px 24px;
+  backdrop-filter: blur(4px);
+}
+
+/* ---------- flash sale ---------- */
+.flash-sale {
+  background: transparent;
+  padding-top: 20px;
+}
+.flash-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--cream);
+  padding-bottom: 20px;
+}
+.flash-header h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--charcoal);
+  font-size: 2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0;
+}
+.countdown-blocks {
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--white);
+  background: var(--rose-deep);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 2px;
+  font-size: 1.05rem;
+}
+
+/* ---------- category banner ---------- */
+.category-banner {
+  position: relative;
+  height: 50vh;
+  min-height: 400px;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+.category-banner h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  color: var(--white);
+  letter-spacing: 4px;
+  margin: 0;
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.3);
+  padding: 16px 32px;
+  backdrop-filter: blur(2px);
+}
+@keyframes zoomEffect {
+  from { transform: scale(1); }
+  to { transform: scale(1.09); }
+}
+
+/* ---------- trending colors ---------- */
+.pro-card.color-card {
+  height: 160px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+  box-shadow: var(--shadow-soft);
+  min-width: 220px;
+}
+.color-name {
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.3);
+}
+
+/* ---------- reels / watch and shop ---------- */
+.reels-grid {
+  display: flex;
+  overflow-x: auto;
+  gap: 18px;
+  padding-bottom: 12px;
+  scroll-snap-type: x mandatory;
+}
+.reels-grid::-webkit-scrollbar {
+  height: 6px;
+}
+.reels-grid::-webkit-scrollbar-thumb {
+  background: var(--rose-soft);
+  border-radius: 4px;
+}
+.reels-grid > * {
+  flex: 0 0 240px;
+  scroll-snap-align: start;
+}
+
+/* ---------- testimonials ---------- */
+.testimonials { background: var(--cream); border-radius: var(--radius-md); }
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+.testi-card {
+  background: var(--white);
+  padding: 30px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+.testi-card .stars { color: var(--gold); font-size: 1.1rem; margin-bottom: 12px; }
+.testi-card p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--charcoal);
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+.testi-card h4 {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--rose-deep);
+  margin: 0;
+}
+
+/* ---------- newsletter ---------- */
+.newsletter-band {
+  background: var(--white);
+  color: var(--charcoal);
+  text-align: center;
+  padding: 80px 24px;
+  border-top: 1px solid var(--cream);
+  border-bottom: 1px solid var(--cream);
+}
+.newsletter-band h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+}
+.newsletter-band p {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: #666;
+  margin: 0 0 36px;
+  font-size: 1.1rem;
+}
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  max-width: 440px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.newsletter-form input {
+  flex: 1;
+  min-width: 260px;
+  padding: 15px 20px;
+  border: 1px solid #ddd;
+  background: var(--white);
+  color: var(--charcoal);
+  font-family: var(--font-body);
+}
+.newsletter-form input::placeholder { color: #999; }
+.newsletter-form button {
+  background: var(--charcoal);
+  color: var(--white);
+  border: none;
+  padding: 15px 36px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.newsletter-form button:hover { background: var(--maroon); }
+
+/* ---------- announcement strip ---------- */
+.announcement-strip {
+  background: var(--gold);
+  color: var(--maroon);
+  text-align: center;
+  padding: 9px 12px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .occasion-grid { grid-template-columns: repeat(2, 1fr); }
+  .testi-grid { grid-template-columns: 1fr; }
+  .guarantees-bar { justify-content: flex-start; }
+}
+@media (max-width: 560px) {
+  .hero-content { padding: 0 6vw 7vh; }
+  .flash-header { flex-direction: column; align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .category-banner img { animation: none !important; }
+  .occasion-card img { transition: none; }
+}
